@@ -1,0 +1,1023 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Department | Manav Rachna University (MRU)</title>
+    <style>
+        :root {
+            --primary: #0d3b66;
+            --primary-dark: #07223d;
+            --accent: #ee964b;
+            --accent-red: #f95738;
+            --bg-light: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --border-color: #e2e8f0;
+            --success: #2a9d8f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-badge {
+            background: var(--accent-red);
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+        }
+
+        .brand-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-size: 0.8rem;
+            color: #d1d5db;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
+
+        nav a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(13, 59, 102, 0.88), rgba(7, 34, 61, 0.92)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            color: white;
+            padding: 4.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            padding: 1.2rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-box .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            color: #f8fafc;
+        }
+
+        /* Main Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.9rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .section-header h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-red);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 6px;
+        }
+
+        /* Facilities Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .facility-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .facility-card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .facility-card-body {
+            padding: 1.2rem;
+        }
+
+        .facility-card-body ul {
+            list-style: none;
+            margin: 0.8rem 0;
+        }
+
+        .facility-card-body li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .facility-card-body li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Interactive Portal (Tabs & Forms) */
+        .interactive-section {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.8rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: #eef4f9;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.65rem 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 59, 102, 0.1);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-accent {
+            background: var(--accent-red);
+        }
+
+        .btn-accent:hover {
+            background: #d84527;
+        }
+
+        /* Dynamic Records Table */
+        .records-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .records-table th, .records-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .records-table th {
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .records-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-confirmed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-issued {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* Notice Board */
+        .notice-board {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .notice-card {
+            background: #ffffff;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .notice-card.urgent {
+            border-left-color: var(--accent-red);
+        }
+
+        .notice-info h4 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .notice-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Hall of Fame */
+        .hall-of-fame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hof-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--accent);
+        }
+
+        .hof-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .hof-card .sport {
+            font-weight: 600;
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hof-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 2.5rem 1.5rem 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        /* Toast Feedback */
+        #alert-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo-area">
+                <span class="logo-badge">MRU</span>
+                <div class="brand-text">
+                    <h1>Sports Department</h1>
+                    <span>Manav Rachna University, Faridabad</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#portal">Student Portal</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#notices">Notices</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Empowering Athletic Excellence at MRU</h2>
+            <p>Welcome to the Directorate of Sports, Manav Rachna University. Dedicated to nurturing university champions, fostering team spirit, and providing world-class sports infrastructure for student athletes.</p>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="num">15+</div>
+                    <div class="label">Sports Disciplines</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">Olympic</div>
+                    <div class="label">Shooting Range Facility</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">40+</div>
+                    <div class="label">Inter-College Trophies</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">4</div>
+                    <div class="label">Multipurpose Arenas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Overview -->
+    <div class="container" id="facilities">
+        <div class="section-header">
+            <h3>Our Sports Infrastructure</h3>
+            <p>Explore world-class indoor and outdoor sports arenas accessible to all MRU students and faculty.</p>
+        </div>
+
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-card-header">
+                    <span>Indoor Sports Arena</span>
+                    <span>🏸</span>
+                </div>
+                <div class="facility-card-body">
+                    <p>Centrally air-conditioned multi-sport complex built to international standards.</p>
+                    <ul>
+                        <li>4 Synthetic Badminton Courts</li>
+                        <li>Table Tennis Arena (6 Tables)</li>
+                        <li>Squash Courts (Glass Back)</li>
+                        <li>Chess & Carrom Lounge</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-card-header">
+                    <span>Olympic Shooting Range</span>
+                    <span>🎯</span>
+                </div>
+                <div class="facility-card-body">
+                    <p>Recognized national training center affiliated with Manav Rachna Sports Academy.</p>
+                    <ul>
+                        <li>10m Air Rifle / Pistol Range</li>
+                        <li>25m & 50m Target Tracks</li>
+                        <li>Electronic Target Scorer Systems</li>
+                        <li>Certified National Coaches</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-card-header">
+                    <span>Outdoor Sports Complex</span>
+                    <span>⚽</span>
+                </div>
+                <div class="facility-card-body">
+                    <p>Full-sized grounds equipped with floodlights for evening athletic sessions.</p>
+                    <ul>
+                        <li>Cricket Pitch & Practice Nets</li>
+                        <li>FIFA-Standard Football Turf</li>
+                        <li>Basketball Courts (DecoTurf)</li>
+                        <li>Volleyball & Tennis Courts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-card-header">
+                    <span>Fitness Hub & Gymnasium</span>
+                    <span>🏋️</span>
+                </div>
+                <div class="facility-card-body">
+                    <p>Comprehensive strength training and cardio facility with professional fitness trainers.</p>
+                    <ul>
+                        <li>Modern Strength & Cardio Equipment</li>
+                        <li>Crossfit & Functional Zone</li>
+                        <li>Separate Ladies Gymnasium</li>
+                        <li>Sports Physiotherapy Consultation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Services Portal -->
+    <div class="container" id="portal">
+        <div class="section-header">
+            <h3>Interactive Sports Services Portal</h3>
+            <p>Online desk for facility reservations, sports equipment requisition, and team trial registrations.</p>
+        </div>
+
+        <div class="interactive-section">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('booking', this)">📅 Facility & Court Booking</button>
+                <button class="tab-btn" onclick="switchTab('equipment', this)">🏓 Equipment Issuance</button>
+                <button class="tab-btn" onclick="switchTab('trials', this)">🏆 Varsity Team Trials</button>
+            </div>
+
+            <!-- Tab 1: Facility Booking -->
+            <div id="booking" class="tab-content active">
+                <form id="booking-form" onsubmit="handleBooking(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="b-name">Student Full Name</label>
+                            <input type="text" id="b-name" required placeholder="e.g. Aryan Sharma">
+                        </div>
+                        <div class="form-group">
+                            <label for="b-roll">Roll No. / Student ID</label>
+                            <input type="text" id="b-roll" required placeholder="e.g. 2K24/MRU/CS/084">
+                        </div>
+                        <div class="form-group">
+                            <label for="b-facility">Facility Required</label>
+                            <select id="b-facility" required>
+                                <option value="">Select Facility...</option>
+                                <option value="Badminton Court 1">Badminton Court 1 (Indoor)</option>
+                                <option value="Badminton Court 2">Badminton Court 2 (Indoor)</option>
+                                <option value="Squash Court">Squash Court</option>
+                                <option value="Table Tennis Arena">Table Tennis Arena</option>
+                                <option value="Cricket Net Practice">Cricket Practice Nets</option>
+                                <option value="10m Shooting Range">10m Air Rifle Shooting Range</option>
+                                <option value="Basketball Court">Basketball Court A</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-date">Date</label>
+                            <input type="date" id="b-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-slot">Time Slot</label>
+                            <select id="b-slot" required>
+                                <option value="">Select Time Slot...</option>
+                                <option value="06:30 AM - 07:30 AM">06:30 AM - 07:30 AM (Morning Session)</option>
+                                <option value="07:30 AM - 08:30 AM">07:30 AM - 08:30 AM</option>
+                                <option value="03:30 PM - 04:30 PM">03:30 PM - 04:30 PM (Evening Session)</option>
+                                <option value="04:30 PM - 05:30 PM">04:30 PM - 05:30 PM</option>
+                                <option value="05:30 PM - 06:30 PM">05:30 PM - 06:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Confirm Facility Booking</button>
+                </form>
+
+                <h4 style="margin-top: 1.8rem; color: var(--primary);">Live Confirmed Slot Reservations</h4>
+                <div style="overflow-x: auto;">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Student Name</th>
+                                <th>Facility</th>
+                                <th>Date & Slot</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booking-list">
+                            <tr>
+                                <td>#BK-1041</td>
+                                <td>Kavya Verma (CSE)</td>
+                                <td>Badminton Court 1</td>
+                                <td>Today, 04:30 PM - 05:30 PM</td>
+                                <td><span class="badge badge-confirmed">Confirmed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#BK-1042</td>
+                                <td>Rohan Mehta (ECE)</td>
+                                <td>10m Shooting Range</td>
+                                <td>Today, 05:30 PM - 06:30 PM</td>
+                                <td><span class="badge badge-confirmed">Confirmed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Equipment Issuance -->
+            <div id="equipment" class="tab-content">
+                <form id="equipment-form" onsubmit="handleEquipment(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="eq-name">Student Name</label>
+                            <input type="text" id="eq-name" required placeholder="e.g. Tanya Kapoor">
+                        </div>
+                        <div class="form-group">
+                            <label for="eq-roll">Student ID / Roll No.</label>
+                            <input type="text" id="eq-roll" required placeholder="e.g. 2K23/MRU/ME/029">
+                        </div>
+                        <div class="form-group">
+                            <label for="eq-item">Equipment Required</label>
+                            <select id="eq-item" required>
+                                <option value="">Select Equipment...</option>
+                                <option value="Yonex Badminton Racquet Pair + Shuttle">Badminton Racquet Pair + Shuttle</option>
+                                <option value="Stag Table Tennis Set (2 Bats + Balls)">Stag TT Set (2 Bats + 2 Balls)</option>
+                                <option value="Nivia Football (Size 5)">Nivia Football (Size 5)</option>
+                                <option value="Spalding Basketball (Size 7)">Spalding Basketball (Size 7)</option>
+                                <option value="Cricket Leather Kit (Bat, Pads, Gloves)">Cricket Kit Full Set</option>
+                                <option value="Squash Racquet + Double Yellow Ball">Squash Racquet + Ball</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eq-duration">Required Duration</label>
+                            <select id="eq-duration" required>
+                                <option value="1 Hour">1 Hour</option>
+                                <option value="2 Hours">2 Hours</option>
+                                <option value="Practice Session (Until 6 PM)">Practice Session (Until 6 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-accent">Issue Equipment Requisition</button>
+                </form>
+
+                <h4 style="margin-top: 1.8rem; color: var(--primary);">Active Borrowed Equipment Tracker</h4>
+                <div style="overflow-x: auto;">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Student</th>
+                                <th>Item Issued</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="equipment-list">
+                            <tr>
+                                <td>#EQ-208</td>
+                                <td>Siddharth Rawat</td>
+                                <td>Yonex Badminton Racquet Pair</td>
+                                <td>2 Hours</td>
+                                <td><span class="badge badge-issued">Issued</span></td>
+                                <td><button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="returnItem(this)">Return</button></td>
+                            </tr>
+                            <tr>
+                                <td>#EQ-209</td>
+                                <td>Ananya Gupta</td>
+                                <td>Nivia Football (Size 5)</td>
+                                <td>1 Hour</td>
+                                <td><span class="badge badge-issued">Issued</span></td>
+                                <td><button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="returnItem(this)">Return</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Varsity Trials Registration -->
+            <div id="trials" class="tab-content">
+                <form id="trials-form" onsubmit="handleTrial(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="tr-name">Athlete Full Name</label>
+                            <input type="text" id="tr-name" required placeholder="e.g. Aman Deep">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-dept">Department & Semester</label>
+                            <input type="text" id="tr-dept" required placeholder="e.g. B.Tech CSE, 3rd Sem">
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-sport">Trial Sport Team</label>
+                            <select id="tr-sport" required>
+                                <option value="">Select Team Trial...</option>
+                                <option value="MRU Varsity Football Team">MRU Varsity Football Team</option>
+                                <option value="MRU Cricket Squad">MRU Cricket Squad</option>
+                                <option value="University Shooting Academy Team">University Shooting Academy Team</option>
+                                <option value="Badminton Men/Women Varsity">Badminton Men/Women Varsity</option>
+                                <option value="Basketball Tigers Team">Basketball Tigers Team</option>
+                                <option value="Athletics & Track Squad">Athletics & Track Squad</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tr-exp">Prior Experience / Achievements</label>
+                            <input type="text" id="tr-exp" placeholder="e.g. School National Player / Zonal Gold">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Register for Team Trials</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hall of Fame -->
+    <div class="container" id="achievements">
+        <div class="section-header">
+            <h3>MRU Sports Hall of Fame</h3>
+            <p>Celebrating national and inter-university laurels brought by Manav Rachna athletes.</p>
+        </div>
+
+        <div class="hall-of-fame-grid">
+            <div class="hof-card">
+                <h4>National Shooting Championship</h4>
+                <div class="sport">Shooting Sports | Gold Medal</div>
+                <p>MRU shooting prodigy clinched top honors in the 10m Air Rifle senior category at the All India Inter-University Games.</p>
+            </div>
+            <div class="hof-card">
+                <h4>All-India Inter-University Badminton</h4>
+                <div class="sport">Badminton | Runners Up</div>
+                <p>The MRU Men's Badminton contingent secured Silver medal outperforming 32 regional universities.</p>
+            </div>
+            <div class="hof-card">
+                <h4>Delhi-NCR Inter-College Football Cup</h4>
+                <div class="sport">Football | Champions 2025-26</div>
+                <p>Undefeated tournament run culminating in a 3-1 victory in the final match at the MRU Sports Arena.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice Board -->
+    <div class="container" id="notices">
+        <div class="section-header">
+            <h3>Official Notices & Circulars</h3>
+            <p>Stay updated with schedule revisions, tournament dates, and equipment policies.</p>
+        </div>
+
+        <div class="notice-board">
+            <div class="notice-card urgent">
+                <div class="notice-info">
+                    <h4>Annual University Sports Fest: Spardha 2026</h4>
+                    <p>Inter-department registrations open next Monday. Captains meeting scheduled in the Sports Complex Conference Room at 3:00 PM.</p>
+                </div>
+                <span class="badge badge-pending">Announcement</span>
+            </div>
+            <div class="notice-card">
+                <div class="notice-info">
+                    <h4>Extended Gym & Fitness Center Timings</h4>
+                    <p>On student request, the gymnasium will remain open till 8:30 PM on weekdays. Physiotherapist on campus every Tuesday & Thursday.</p>
+                </div>
+                <span class="badge badge-confirmed">Facility Update</span>
+            </div>
+            <div class="notice-card">
+                <div class="notice-info">
+                    <h4>University Cricket & Football Team Trials</h4>
+                    <p>Trials for the upcoming North Zone Inter-University Tournament will be held this Saturday from 7:00 AM on the main sports ground.</p>
+                </div>
+                <span class="badge badge-issued">Team Trials</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Footer -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Directorate of Sports</h4>
+                <p>Manav Rachna University (MRU)<br>
+                Sector 43, Aravalli Hills, Delhi-Surajkund Road<br>
+                Faridabad, Haryana – 121004</p>
+            </div>
+            <div class="footer-col">
+                <h4>Operating Hours</h4>
+                <p>Indoor Sports Complex: 06:00 AM - 08:30 PM<br>
+                Outdoor Grounds: 06:00 AM - 07:00 PM<br>
+                Sports Equipment Requisition Desk: 09:00 AM - 05:30 PM<br>
+                Sunday: Closed for Maintenance</p>
+            </div>
+            <div class="footer-col">
+                <h4>Helpline & Queries</h4>
+                <p>Email: sports.department@mru.edu.in<br>
+                Phone: +91 129 4259000 (Ext. 248)<br>
+                Sports Incharge: Room 102, Indoor Sports Block</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Manav Rachna University (MRU) - Directorate of Sports. Designed for Website Development (WD) Internal Assessment.</p>
+        </div>
+    </footer>
+
+    <div id="alert-box">Action completed successfully!</div>
+
+    <script>
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            btnElement.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function showAlert(msg) {
+            const box = document.getElementById('alert-box');
+            box.textContent = msg;
+            box.style.display = 'block';
+            setTimeout(() => {
+                box.style.display = 'none';
+            }, 3500);
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('b-name').value;
+            const facility = document.getElementById('b-facility').value;
+            const slot = document.getElementById('b-slot').value;
+            const bId = '#BK-' + Math.floor(1000 + Math.random() * 9000);
+
+            const tbody = document.getElementById('booking-list');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${bId}</td>
+                <td>${name}</td>
+                <td>${facility}</td>
+                <td>${slot}</td>
+                <td><span class="badge badge-confirmed">Confirmed</span></td>
+            `;
+            tbody.prepend(newRow);
+            showAlert(`Slot Reserved: ${facility} for ${name}!`);
+            document.getElementById('booking-form').reset();
+        }
+
+        function handleEquipment(e) {
+            e.preventDefault();
+            const name = document.getElementById('eq-name').value;
+            const item = document.getElementById('eq-item').value;
+            const duration = document.getElementById('eq-duration').value;
+            const eqId = '#EQ-' + Math.floor(200 + Math.random() * 800);
+
+            const tbody = document.getElementById('equipment-list');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${eqId}</td>
+                <td>${name}</td>
+                <td>${item}</td>
+                <td>${duration}</td>
+                <td><span class="badge badge-issued">Issued</span></td>
+                <td><button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="returnItem(this)">Return</button></td>
+            `;
+            tbody.prepend(newRow);
+            showAlert(`Equipment Requisition Registered for ${item}!`);
+            document.getElementById('equipment-form').reset();
+        }
+
+        function returnItem(btn) {
+            const row = btn.closest('tr');
+            const badge = row.querySelector('.badge');
+            badge.className = 'badge badge-confirmed';
+            badge.textContent = 'Returned';
+            btn.disabled = true;
+            btn.textContent = 'Done';
+            btn.style.background = '#64748b';
+            showAlert('Equipment successfully marked as returned.');
+        }
+
+        function handleTrial(e) {
+            e.preventDefault();
+            const name = document.getElementById('tr-name').value;
+            const sport = document.getElementById('tr-sport').value;
+            showAlert(`Trial Application Submitted for ${name} (${sport}). Check notice board for trial dates!`);
+            document.getElementById('trials-form').reset();
+        }
+
+        // Set default date picker value to today
+        document.getElementById('b-date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
